@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "764865402838",
+    "firebase_url": "https://zula-4bd63.firebaseio.com",
+    "project_id": "zula-4bd63",
+    "storage_bucket": "zula-4bd63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764865402838:android:a169e5ed9441f3d4",
+        "android_client_info": {
+          "package_name": "com.khieuthichien.zula"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764865402838-t6h5nkgj680nklohbj6sqpk6poaiacte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khieuthichien.zula",
+            "certificate_hash": "958a508c08ab2244643b39e9c7409f0df6379c8c"
+          }
+        },
+        {
+          "client_id": "764865402838-5ql19anma1gd2amo7hlguimscm4qgohs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHW3BcS3mq9AqlDF7LrkD51LpQed1V8O0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764865402838-5ql19anma1gd2amo7hlguimscm4qgohs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
