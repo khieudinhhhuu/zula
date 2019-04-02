@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Zula</string>
+    <string name="edt_stt_status_news_feed">Do not leave blank</string>
 </resources>

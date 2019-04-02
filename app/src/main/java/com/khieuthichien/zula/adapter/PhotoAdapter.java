@@ -36,6 +36,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     public void onBindViewHolder(@NonNull PhotoHolder holder, int position) {
         final Photo photo = photoList.get(position);
         holder.textViewName.setText(photo.getmName());
+        holder.imageViewUpload.setVisibility(View.VISIBLE);
         Picasso.with(context)
                 .load(photo.getmImageUrl())
                 .into(holder.imageViewUpload);

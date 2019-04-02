@@ -34,6 +34,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.khieuthichien.zula.R;
+import com.khieuthichien.zula.StatusNewsFeedActivity;
 import com.khieuthichien.zula.adapter.PhotoAdapter;
 import com.khieuthichien.zula.model.Photo;
 import com.squareup.picasso.Picasso;
@@ -99,6 +100,7 @@ public class NewsFeedFragment extends Fragment {
                 photoAdapter.notifyDataSetChanged();
                 progressCircle.setVisibility(View.INVISIBLE);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
@@ -117,46 +119,7 @@ public class NewsFeedFragment extends Fragment {
         statusNewsFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View dialogView = inflater.inflate(R.layout.dialog_status_news_feed, null);
-                builder.setView(dialogView);
-                final Dialog dialog = builder.show();
-
-                final Button btn_post_status_news_feed;
-                final Button btn_cancel_status_news_feed;
-
-                btn_post_status_news_feed = dialog.findViewById(R.id.btn_post_status_news_feed);
-                btn_cancel_status_news_feed = dialog.findViewById(R.id.btn_cancel_status_news_feed);
-
-                btn_post_status_news_feed.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final EditText edt_stt_status_news_feed;
-                        edt_stt_status_news_feed = dialog.findViewById(R.id.edt_stt_status_news_feed);
-
-                        String stt_status = edt_stt_status_news_feed.getText().toString().trim();
-
-                        if (stt_status.equals("")){
-                            Toast.makeText(getContext(), "Cancel the post", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else {
-                            Toast.makeText(getContext(), "Cancel the post", Toast.LENGTH_SHORT).show();
-                        }
-
-
-                        dialog.dismiss();
-                    }
-                });
-
-                btn_cancel_status_news_feed.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getContext(), "Cancel the post", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-
+                startActivity(new Intent(getActivity(), StatusNewsFeedActivity.class));
             }
         });
         photoNewsFeed.setOnClickListener(new View.OnClickListener() {
@@ -187,13 +150,26 @@ public class NewsFeedFragment extends Fragment {
 
             final EditText edt_stt_photo_news_feed;
             final ImageView img_photo_news_feed;
+            final ImageView img_select_photo_news_feed;
             final Button btn_post_photo_news_feed;
             final Button btn_cancel_photo_news_feed;
 
             edt_stt_photo_news_feed = dialog.findViewById(R.id.edt_stt_photo_news_feed);
             img_photo_news_feed = dialog.findViewById(R.id.img_photo_news_feed);
+            img_select_photo_news_feed = dialog.findViewById(R.id.img_select_photo_news_feed);
             btn_post_photo_news_feed = dialog.findViewById(R.id.btn_post_photo_news_feed);
             btn_cancel_photo_news_feed = dialog.findViewById(R.id.btn_cancel_photo_news_feed);
+
+            img_select_photo_news_feed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+                    dialog.dismiss();
+                }
+            });
 
             filePath = data.getData();
             Picasso.with(getContext())
@@ -203,8 +179,8 @@ public class NewsFeedFragment extends Fragment {
             btn_post_photo_news_feed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (filePath != null) {
 
+                    if (filePath != null) {
                         final ProgressDialog progressDialog = new ProgressDialog(getContext());
                         progressDialog.setTitle("Uploading...");
                         progressDialog.show();
@@ -216,6 +192,7 @@ public class NewsFeedFragment extends Fragment {
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                         progressDialog.dismiss();
                                         Toast.makeText(getContext(), "Post Successful", Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
 
                                         Photo photo = new Photo(edt_stt_photo_news_feed.getText().toString().trim(), taskSnapshot.getDownloadUrl().toString());
                                         String photoId = mDatabaseReference.push().getKey();
@@ -249,6 +226,7 @@ public class NewsFeedFragment extends Fragment {
                     dialog.dismiss();
                 }
             });
+
         }
 
     }
