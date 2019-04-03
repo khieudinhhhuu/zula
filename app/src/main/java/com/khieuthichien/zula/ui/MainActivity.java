@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar = getSupportActionBar();
-        toolbar.setTitle("News Feed");
+        //toolbar.setTitle("News Feed");
         loadFragment(new NewsFeedFragment());
     }
 
@@ -43,27 +43,27 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.itemNewsFeed:
                     fragment = new NewsFeedFragment();
                     loadFragment(fragment);
-                    toolbar.setTitle("News Feed");
+                    //toolbar.setTitle("News Feed");
                     return true;
                 case R.id.itemRequests:
                     fragment = new RequestsFragment();
                     loadFragment(fragment);
-                    toolbar.setTitle("Requests");
+                    //toolbar.setTitle("Requests");
                     return true;
                 case R.id.itemMessages:
                     fragment = new MessagesFragment();
                     loadFragment(fragment);
-                    toolbar.setTitle("Messages");
+                    //toolbar.setTitle("Messages");
                     return true;
                 case R.id.itemNotifications:
                     fragment = new NotificationsFragment();
                     loadFragment(fragment);
-                    toolbar.setTitle("Notifications");
+                    //toolbar.setTitle("Notifications");
                     return true;
                 case R.id.itemUser:
                     fragment = new UserFragment();
                     loadFragment(fragment);
-                    toolbar.setTitle("User");
+                    //toolbar.setTitle("User");
                     return true;
             }
             return false;

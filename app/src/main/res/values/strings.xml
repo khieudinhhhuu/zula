@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Zula</string>
     <string name="edt_stt_status_news_feed">Do not leave blank</string>
+    <string name="notify_empty_email">Do not leave blank</string>
+    <string name="notify_empty_password">Do not leave blank</string>
+    <string name="notify_empty_password_length">Password must be more than 6 characters</string>
+    <string name="login_error_title">Error!</string>
+    <string name="notify_empty_username">Do not leave blank</string>
 </resources>

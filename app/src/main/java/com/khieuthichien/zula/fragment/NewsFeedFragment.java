@@ -34,7 +34,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.khieuthichien.zula.R;
-import com.khieuthichien.zula.StatusNewsFeedActivity;
+import com.khieuthichien.zula.ui.StatusNewsFeedActivity;
 import com.khieuthichien.zula.adapter.PhotoAdapter;
 import com.khieuthichien.zula.model.Photo;
 import com.squareup.picasso.Picasso;

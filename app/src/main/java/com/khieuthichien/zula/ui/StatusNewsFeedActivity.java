@@ -1,4 +1,4 @@
-package com.khieuthichien.zula;
+package com.khieuthichien.zula.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -28,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.khieuthichien.zula.R;
 import com.khieuthichien.zula.adapter.PhotoAdapter;
 import com.khieuthichien.zula.fragment.NewsFeedFragment;
 import com.khieuthichien.zula.model.Photo;
