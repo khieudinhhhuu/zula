@@ -29,8 +29,8 @@
         </activity>
         <activity
             android:name=".ui.CreateNewAccountActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".ui.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".ui.MainActivity"
@@ -40,6 +40,9 @@
             android:name=".ui.StatusNewsFeedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity android:name=".MessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar"/>
     </application>
 
 </manifest>

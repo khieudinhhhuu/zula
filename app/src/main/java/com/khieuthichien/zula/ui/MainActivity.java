@@ -1,13 +1,19 @@
 package com.khieuthichien.zula.ui;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toolbar;
 
 import com.khieuthichien.zula.R;
 import com.khieuthichien.zula.fragment.MessagesFragment;
@@ -18,7 +24,9 @@ import com.khieuthichien.zula.fragment.UserFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigation;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ViewPagesAdapter viewPagesAdapter;
     private ActionBar toolbar;
 
     @Override
@@ -26,57 +34,97 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigation = findViewById(R.id.bottomNavigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
 
         toolbar = getSupportActionBar();
-        //toolbar.setTitle("News Feed");
-        loadFragment(new NewsFeedFragment());
+
+        viewPagesAdapter = new ViewPagesAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagesAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_subtitles_black_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_people_black_24dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_forum_black_24dp);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_notifications_black_24dp);
+        tabLayout.getTabAt(4).setIcon(R.drawable.ic_person_black_24dp);
+
     }
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.itemNewsFeed:
-                    fragment = new NewsFeedFragment();
-                    loadFragment(fragment);
-                    //toolbar.setTitle("News Feed");
-                    return true;
-                case R.id.itemRequests:
-                    fragment = new RequestsFragment();
-                    loadFragment(fragment);
-                    //toolbar.setTitle("Requests");
-                    return true;
-                case R.id.itemMessages:
-                    fragment = new MessagesFragment();
-                    loadFragment(fragment);
-                    //toolbar.setTitle("Messages");
-                    return true;
-                case R.id.itemNotifications:
-                    fragment = new NotificationsFragment();
-                    loadFragment(fragment);
-                    //toolbar.setTitle("Notifications");
-                    return true;
-                case R.id.itemUser:
-                    fragment = new UserFragment();
-                    loadFragment(fragment);
-                    //toolbar.setTitle("User");
-                    return true;
-            }
-            return false;
+    class ViewPagesAdapter extends FragmentPagerAdapter {
+
+        public ViewPagesAdapter(FragmentManager fm) {
+            super(fm);
         }
-    };
 
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment = null;
+            switch (position) {
+                case 0:
+                    fragment = new NewsFeedFragment();
+                    break;
+                    //return new NewsFeedFragment();
+                case 1:
+                    fragment = new RequestsFragment();
+                    break;
+                    //return new RequestsFragment();
+                case 2:
+                    fragment = new MessagesFragment();
+                    break;
+                    //return new MessagesFragment();
+                case 3:
+                    fragment = new NotificationsFragment();
+                    break;
+                    //return new NotificationsFragment();
+                case 4:
+                    fragment = new UserFragment();
+                    break;
+                    //return new UserFragment();
+                default:
+                    fragment = new NewsFeedFragment();
+                    break;
+                    //return new NewsFeedFragment();
+            }
+            return fragment;
+        }
 
-    private void loadFragment(Fragment fragment){
-        //loadFragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        @Override
+        public int getCount() {
+            return 5;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            String title = "";
+            switch (position) {
+                case 0:
+                    title = "";
+                    break;
+                    //return "News Feed";
+                case 1:
+                    title = "";
+                    break;
+                case 2:
+                    title = "";
+                    break;
+                case 3:
+                    title = "";
+                    break;
+                case 4:
+                    title = "";
+                    break;
+                default:
+                    title = "";
+                    break;
+                    //return "News Feed";
+            }
+            return title;
+        }
     }
+
 
 }
