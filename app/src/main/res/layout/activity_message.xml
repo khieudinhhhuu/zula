@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#e6e4e4"
-    tools:context=".MessageActivity">
+    tools:context=".ui.MessageActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_message"
+            android:id="@+id/recyclerview_chat"
             android:layout_above="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

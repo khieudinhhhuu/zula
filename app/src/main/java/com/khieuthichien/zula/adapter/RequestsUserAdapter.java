@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.khieuthichien.zula.MessageActivity;
+import com.khieuthichien.zula.ui.MessageActivity;
 import com.khieuthichien.zula.R;
 import com.khieuthichien.zula.model.User;
 

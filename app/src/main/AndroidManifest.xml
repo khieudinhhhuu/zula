@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/zula"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/zula"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -40,7 +40,7 @@
             android:name=".ui.StatusNewsFeedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".MessageActivity"
+        <activity android:name=".ui.MessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar"/>
     </application>
